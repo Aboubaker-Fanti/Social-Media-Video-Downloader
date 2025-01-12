@@ -1,0 +1,11 @@
+FROM debian:bullseye
+
+RUN apt-get update && apt-get install -y nginx 
+
+# RUN mkdir -p /var/www/social
+EXPOSE 8899
+# COPY ./website /var/www/social
+COPY config/default.conf /etc/nginx/conf.d/default.conf
+
+CMD ["nginx", "-g", "daemon off;"]
+
