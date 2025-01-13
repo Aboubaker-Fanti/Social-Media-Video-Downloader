@@ -1,525 +1,180 @@
-
 /* here i fixed dives position and content displayed */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #F7F8FC;
+}
+
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  justify-content: space-between;
+  padding: 40px 30px;
+  align-items: center;
+}
+
+/* === ====== ====== ===== === ===  work with vanbar here === ====== ====== ===== === === */
+
+.container .navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  /* flex-direction: ; */
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 19px;
+  color: black;
+  /* list-style: none; */
+  /* text-decoration-line: none; */
   
-  body {
-    height: 100vh;
-    background: var(--body-color);
-  }
-  
-  
-  :root {
-    /* ===== Colors ===== */
-    --body-color: #E4E9F7;
-    --sidebar-color: #fff;
-    --primary-color: #695cfe;
-    --primary-color-light: #f6f5ff;
-    --toggle-color: #DDD;
-    --text-color: #707070;
-  
-    --tran-02: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.4s ease;
-    --tran-05: all 0.5s ease;
-  }
-  
-  body.dark {
-    --body-color: #18191A;
-    --sidebar-color: #242526;
-    --primary-color: #3A3B3C;
-    --primary-color-light: #3A3B3C;
-    --toggle-color: #FFF;
-    --text-color: #CCC;
-  }
-  
+}
+
+.main_content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(rgba(56 161 255 / 54%), rgba(36 87 182 / 70%)),
+              url('/api/placeholder/900/300');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: black;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.about-section h2 {
+  color: #0079fa;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.about-section p {
+  color: black;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: rgba(77, 163, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: #0079fa;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: black;
+  font-size: 0.95rem;
+}
+
+.team-section {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.team-section h2 {
+  color: #0079fa;
+  margin-bottom: 1.5rem;
+}
+
+.contact-bar {
+  background: linear-gradient(45deg, #0079fa, #5c6bc0);
+  padding: 1.9rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.contact-bar a {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.contact-bar a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
   .container {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
+    padding: 1rem;
   }
   
-  .container .header {  
-    position: fixed;
-    margin: 0;
-    padding-left: 7.2em;
-    height: 10vh;
-    width: 100%;
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
   }
   
-  .container .navbar {
-    position: fixed;
-    min-height: 100vh;
-    width: 5em;
+  .features {
+    grid-template-columns: 1fr;
   }
-  
-  .container .main-content {
-    padding-top: 11vh;
-    padding-left: 7.2em;
-    height: 100vh;
-    width: 100%;
-  }
-  
-  /* ==============  here i will work with header content  ============== */
-  #butt {
-    display: none;
-  }
-  
-  .header {
-    position: relative; 
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-    transition: var(--tran-05);
-  }
-  
-  .header .profile {
-    right: 8px;
-    position: relative;
-    display: flex;
-    padding: 7px;
-    align-items: center;
-  }
-  
-  .header .profile .image img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-left: 5px;
-  }
-  
-  .header .profile .text {
-    color: gray;
-  }
-  
-  .header .notification {
-    font-size: 18px;
-    color: gray;
-    padding-right: 17px;
-  }
-  
-  .sear {
-    /* height: 20vh; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* margin-left: 35px; */
-  }
-  
-  .search-btn {
-    /* margin-top: 17px; */
-    display: flex;
-    align-items: center;
-  }
-  
-  .sear .seafr.active {
-    display: flex;
-  }
-  
-  .sear .seafr {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    margin-top: 6vh;
-    min-height: 100px;
-    width: 260px;
-    border-radius: 25px;
-    /* margin: 12px; */
-    background-color: red;
-  }
-  
-  .sear .seafr ul {
-    /* border: 2px; */
-    background-color: rgb(155, 150, 150);
-    border-radius: 20px;
-    /* display: flex;
-    flex-direction: row; */
-  
-  }
-  .sear .seafr ul li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-  
-  }
-  
-  .sear .seafr #click_btn {
-    padding: 5px;
-    background-color: rgb(251, 251, 244);
-    border-radius: 25px;
-  }
-  
-  .sear .seafr img {
-    width: 50px;
-  }
-  
-  
-  
-  
-  .search-btn input {
-    background-color: var(--primary-color-light);
-    width: 220px;
-    font-size: 18px;
-    padding: 7px 20px;
-    border-radius: 25px;
-    border: none;
-    color: var(--text-color);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance:none;
-  }
-  
-  .search-btn .icon {
-    position: absolute;
-    top: 50%;
-    left: 15.95em;
-    transform: translateY(-50%); 
-    cursor: pointer;
-    font-size: 19px;
-  }
-  
-  /* ==============  here i will work with navbar content  ============== */
-  
-  .sidebar {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 88px;
-    padding: 10px 14px;
-    background-color: var(--sidebar-color);
-    transition: var(--tran-05);
-  }
-  
-  .sidebar .image {
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .sidebar li {
-    height: 50px;
-    margin-top: 10px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-  }
-  
-  .sidebar li .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 60px;
-    font-size: 20px;
-  }
-  
-  .sidebar li .icon {
-    color: var(--text-color);   
-    transition: var(--tran-02); 
-  }
-  
-  .sidebar header {
-    position: relative;
-  }
-  
-  .sidebar .image-text img {
-    width: 70px;
-    border-radius: 6px;
-    padding-top: 10px;
-  }
-  
-  .sidebar li a {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: var(--tran-04);
-  }
-  
-  .sidebar li a:hover {
-    background: var(--primary-color);
-  }
-  
-  .sidebar li a:hover .icon {
-    color: var(--sidebar-color);
-  }
-  
-  .sidebar .menu-bar {
-    margin-top: 20px;
-    height: calc(100% - 90px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .menu-bar .mode {
-    position: relative;
-    border-radius: 6px;
-    background: var(--primary-color-light);
-  }
-  
-  .menu-bar .mode .moon-sun {
-    height: 50px;
-    width: 60px;
-    display: flex;
-    align-items: center;   
-  }
-  
-  .menu-bar .mode i {
-    position: absolute;
-  }
-  
-  .menu-bar .mode .toggle-switch {
-    position: absolute;
-    right: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 60px;
-    cursor: pointer;
-  }
-  
-  .toggle-switch .switch {
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color);
-  }
-  
-  .switch::before {
-    content: '';
-    position: absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background: var(--sidebar-color) ;
-    transition: var(--tran-03);
-  }
-  
-  body.dark .switch::before{
-    left: 24px;
-  }
-  
-  /* ==============  here i will work with  content  ============== */
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /* // =========================== here i will work with media =========================== */
-  
-  
-  @media (min-width: 445px) and (max-width: 515px) {
-    .sear .seafr {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        margin-top: 6vh;
-        min-height: 100px;
-        width: 260px;
-        border-radius: 25px;
-        margin-left: 95px;
-        /* margin: 12px; */
-    }
-    
-    .sear {
-        /* height: 20vh; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-  
-    .search-btn input {
-        background-color: var(--primary-color-light);
-        width: 150px;
-        font-size: 18px;
-        padding: 7px 20px;
-        border-radius: 25px;
-        border: none;
-        color: var(--text-color);
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-  
-    .search-btn .icon {
-        position: absolute;
-        top: 50%;
-        left: 12.20em;
-        transform: translateY(-50%); 
-        cursor: pointer;
-        font-size: 19px;
-    }
-    
-    
-  }
-  
-  @media (max-width: 444px) {
-    .search-btn.active input {
-        display: flex;
-        position: absolute;
-        background-color: var(--primary-color-light);
-        width: 150px;
-        font-size: 18px;
-        padding: 7px 20px;
-        border-radius: 25px;
-        border: none;
-        color: var(--text-color);
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        margin-left: 30px;
-        margin-top: 30px;
-    }
-  
-        .sear .seafr {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        margin-top: 8vh;
-        min-height: 100px;
-        width: 260px;
-        border-radius: 25px;
-        margin-left: 190px;
-        /* margin: 12px; */
-    }
-  
-    .search-btn input {
-        display: none;
-        background-color: var(--primary-color-light);
-        width: 150px;
-        font-size: 18px;
-        padding: 7px 20px;
-        border-radius: 25px;
-        border: none;
-        color: var(--text-color);
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .search-btn .icon {
-        
-        padding: 6px 10px;
-        align-items: center;
-        border-radius: 20px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        position: absolute;
-        top: 50%;
-        left: 9.20em;
-        transform: translateY(-50%); 
-        cursor: pointer;
-        font-size: 19px;
-    }
-  
-    .sidebar {
-        position: relative;
-        top: 0;
-        left: 0;
-        height: 10vh;
-        width: 88px;
-        padding: 3px 14px;
-        background-color: var(--body-color);
-        transition: var(--tran-05);
-        overflow: hidden;
-    }
-  
-    .sidebar.active {
-        
-        height: 100vh;
-        padding: 10px 14px;
-        background-color: var(--sidebar-color);
-    
-    }
-    #butt {
-        display: flex;
-        /* width: 45px; */
-        font-size: 30px;
-        cursor: pointer;
-    }
-    
-  }
-  
-  @media (max-width: 380px) {
-    .sear .seafr {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        margin-top: 6vh;
-        min-height: 100px;
-        width: 260px;
-        border-radius: 25px;
-        margin-left: 100px;
-        /* margin: 12px; */
-    }
-  
-  }
-  
-  @media (max-width: 350px) {
-    .search-btn .icon {
-        
-        padding: 6px 10px;
-        align-items: center;
-        border-radius: 20px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        position: absolute;
-        top: 50%;
-        left: 8.2em;
-        transform: translateY(-50%); 
-        cursor: pointer;
-        font-size: 19px;
-    }
-  
-    #butt {
-        display: flex;
-        /* width: 45px; */
-        font-size: 30px;
-        cursor: pointer;
-    }
-    .sidebar .image-text img {
-        width: 70px;
-        border-radius: 6px;
-        padding-top: 3px;
-    }
-    
-  
-  }
-  @media (max-width: 400px) {
-    .header .profile .image img {
-        display: none;
-    }
-    
-  }
+}

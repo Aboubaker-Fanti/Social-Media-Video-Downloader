@@ -6,7 +6,11 @@ async function About() {
 
   const app = document.getElementById('app');
   app.innerHTML = html;
-
+const to_home = document.querySelector('.contact-bar');
+to_home.addEventListener("click", () => {
+  console.log("hello we are here");
+  window.location.hash = "/";
+})
  
 }
 
