@@ -24,7 +24,7 @@ async function Contact() {
         message: document.getElementById('message').value.trim()
       };
 
-      console.log('Form Data:', formData);
+      console.log('Form Data you can use it as you want if you wanna use this repo :', formData);
 
     });
 

@@ -90,7 +90,6 @@ async function Home() {
 async function downloadVideo() {
     const url = document.getElementById('input_data').value;
     const qualityUrl = document.getElementById('qualitySelect').value;
-    console.log("hello we are smart than what you think");
 
     const formData = new FormData();
     formData.append('url', url);
@@ -150,10 +149,7 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 async function getQualities() {
-    console.log("Fetching qualities...");
     const url = document.getElementById('input_data').value.trim();
-    console.log("csrftoken: ", getCookie('csrftoken'));
-    console.log("url: ", url);
     const formData = new FormData();
     formData.append('url', url);
 
@@ -175,12 +171,10 @@ async function getQualities() {
           });
           
           const jsonData = await response.json();
-          console.log("Received data: ", jsonData);
   
           if (!response.ok) {
               console.error(`Status: ${response.status}, Message: ${response.message || 'Unknown error'}`);
           } else {
-              console.log('Data fetched successfully:', response);
               document.getElementById('message').innerText = '';
             const qualitySelect = document.getElementById('qualitySelect');
             qualitySelect.innerHTML = '<option value="">Select quality</option>';
