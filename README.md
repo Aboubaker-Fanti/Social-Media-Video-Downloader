@@ -17,8 +17,7 @@
 <h2>Getting Started</h2>
 <ol>
     <li>Clone the repository:</li>
-    <pre><code>git clone https://github.com/your-username/social-media-video-downloader.git
-cd social-media-video-downloader</code></pre>
+    <pre><code>git clone https://github.com/Aboubaker-Fanti/Social-Media-Video-Downloader.git</code></pre>
     <li>Use the <code>Makefile</code> commands for setup and execution.</li>
 </ol>
 
